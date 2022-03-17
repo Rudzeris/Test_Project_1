@@ -1,4 +1,25 @@
-h1 {
-    color: blue;
-    margin-bottom:2rem;
+.Heading {
+    color: rosybrown;
+    font-size:2rem;
+    margin-top:2rem;
+    text-align: center;
+}
+.h2{
+
+}
+.page_imagenav__link{
+    outline: 2px solid #000; /* Чёрная рамка */
+    border: 3px solid #fff; /* Белая рамка */
+    border-radius: 10px; /* Радиус скругления */
+}
+.Nation{
+
+}
+
+.d-block w-100{
+    size: 2rem;
+}
+
+.Civilizations{
+
 }
