@@ -14,6 +14,11 @@ class Book(models.Model):
     name = models.CharField('Название', max_length=128)
     pages = models.IntegerField('Количество страниц', blank=True, null=True)
 
+    class Meta:
+        ordering=['pages']
+        verbose_name='Книги'
+        verbose_name_plural='Книги'
+
     def __str__(self):
         return self.name
 
