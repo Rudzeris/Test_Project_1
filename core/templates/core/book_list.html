@@ -38,15 +38,16 @@
   </nav>
 
 
-  <form class="row g-3">
-        <div class="col-auto">
-            <input type="text" class="form-control" placeholder="Название" name="name" value="{{ request.GET.name }}">
-        </div>
-        <div class="col-auto">
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
-    </form>
+<form class="row g-3">
+    <div class="col-auto">
+        <input type="text" class="form-control" placeholder="Название" name="name" value="{{ request.GET.name }}">
+    </div>
+    <div class="col-auto">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
 
+{{ request.user }}
 
   <table class="table">
     <thead>
