@@ -37,6 +37,12 @@
     </div>
   </nav>
 
+  {% block title %}
+      {% if title %}
+          <h3>{{ title }}</h3>
+      {% endif %}
+  {% endblock %}
+
 {% block content %}
     <h3>Добро пожаловать на главную страницу</h3>
 {% endblock %}
