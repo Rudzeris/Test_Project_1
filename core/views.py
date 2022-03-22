@@ -1,17 +1,24 @@
 from django.http import HttpResponseNotFound
 from django.shortcuts import render, get_object_or_404
+from django.views.decorators.http import require_http_methods
+from django.views.generic import TemplateView, ListView, DetailView
+
 import core.models
 
-def index(request):
-    books= core.models.Book.objects.all()
-    return render(request, 'core/index.html', {'books':books})
 
-def book_list(request):
-    books= core.models.Book.objects.all()
-    return render(request, 'core/book_list.html', {'books':books})
+class IndexView(TemplateView):
+    template_name = 'core/index.html'
 
-def book_detail(request, pk):
 
-    book = get_object_or_404(core.models.Book,pk=pk)
-    return render(request, 'core/book_detail.html', {'book':book})
+class Books(ListView):
+    def get_queryset(self):
+        name = self.request.GET.get('name')
+        queryset = core.models.Book.objects.all()
+        if name:
+            queryset = queryset.filter(name__icontains=name)
+        return queryset
+
+
+class BookDetail(DetailView):
+    queryset = core.models.Book.objects.all()
 
