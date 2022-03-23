@@ -7,12 +7,8 @@ class BookSearch(forms.Form):
     name = forms.CharField(label='Название', required=False)
     min_pages = forms.IntegerField(label='Кол-во страниц', required=False, help_text='Минимальное кол-во страниц')
 
-    def clean_min_pages(self):
-        cleaned_data = self.cleaned_data
-        min_pages = cleaned_data.get('min_pages')
-        if(min_pages and  min_pages>1000):
-            raise forms.ValidationError('Количество страниц не должно быть больше 1000')
-        return cleaned_data
+    def clean(self):
+        return forms.ValidationError('Ошибка!')
 
 class BookEdit(forms.ModelForm):
     class Meta:

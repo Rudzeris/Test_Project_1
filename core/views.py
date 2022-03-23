@@ -5,6 +5,7 @@ from django.views.generic import TemplateView, ListView, DetailView
 
 import core.models
 import core.forms
+import core.filters
 
 
 class TitleMixin:
@@ -35,12 +36,15 @@ class IndexView(TitleMixin,TemplateView):
 class Books(TitleMixin, ListView):
     title = 'Книги'
 
+    def get_filters(self):
+        return core.filters.BookFilter(self.request.GET)
+
     def get_queryset(self):
-        name = self.request.GET.get('name')
-        queryset = core.models.Book.objects.all()
-        if name:
-            queryset = queryset.filter(name__icontains=name)
-        return queryset
+        # name = self.request.GET.get('name')
+        # queryset = core.models.Book.objects.all()
+        # if name:
+        #     queryset = queryset.filter(name__icontains=name)
+        return self.get_filters()
 
     def get_context_data(self):
         context = super().get_context_data()
