@@ -13,6 +13,7 @@ class BookModel(TestCase):
         self.assertEqual(
             str(self.book),
             'Test Book',
+            'Строковое представление объекта должно возвращать название'
         )
 
 
@@ -24,6 +25,7 @@ class BookSearchTestCase(TestCase):
 
     def testWithoutParams(self):
         response = self.client.get(reverse('core:book_list'))
+        self.assertEqual(200, response.status_code)
         self.assertSequenceEqual(
             list(response.context['object_list']),
             list(models.Book.objects.all()),
